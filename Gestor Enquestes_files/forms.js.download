@@ -1,0 +1,852 @@
+
+function getRadioValue (element) {
+	for (var n = 0; n < element.length; n++) {
+		if (element[n].checked)
+			return element[n].value;
+	}
+	return ("");
+}
+
+function setRadioValue (element,valor) {
+	for (var n = 0; n < element.length; n++)
+	{
+		if (element[n].value==valor)
+		{
+			element[n].checked=1;
+		};
+	};
+}
+
+function getSelectValue (element) {
+	return element.options[element.selectedIndex].value;
+}
+
+
+function setSelect(obj,valor) {
+	for (i=0; i<obj.options.length; i++) {
+		if (obj.options[i].value == valor) {
+			obj.selectedIndex = i;
+			return true;
+		}
+	}
+	return false;
+}
+
+function padLeft(s,num,car) {
+	ss = new String(s);
+	while(ss.length < num) {
+		ss=car+ss;
+	}
+	return ss;
+}
+
+
+
+function setDateValue (elementBase,dia,mes,any) {
+	element = eval (elementBase+"_dia");
+	setSelect(element,dia) 
+	element = eval (elementBase+"_mes");
+	setSelect(element,mes) 
+	element = eval (elementBase+"_any");
+	setSelect(element,any) 
+}
+
+
+
+function validaEmail(textEmail)
+{
+	// buscar la @ i el punt de domini
+	// la @ no pot estar ni al principi ni a menos de 3 del final
+	// el punt almenys a 2 del final i ha d'existir buscar ultim punt
+	
+	arbini= textEmail.indexOf ('@');
+	arbfi=textEmail.lastIndexOf('@');
+	puntfi=textEmail.lastIndexOf('.');
+	
+	if (arbini!=arbfi) return false ; // hi ha mes de una @
+	if (puntfi<0) return false ; // si no hi ha cap punt
+	if (arbini<2) return false ; // hi la @ esta només començar
+	if (arbini>textEmail.length-4) return false ; // hi la @ esta al final de tot o sense domini
+	if (puntfi<arbini) return false ; 
+	if (puntfi>textEmail.length-1) return false ; 
+	
+	return true;
+};
+
+
+function blancs(cadena) 
+{	
+	for (c=0;c<cadena.length;c++)
+	   if (cadena.charAt(c) != " ") 
+	      return false;
+	return true;
+}
+
+
+function validaObligatoris (formulari,campsObligatoris)
+{ 
+ 	obligatoris = campsObligatoris.split(",");
+	missatge="";
+	
+	for (i=0; i< obligatoris.length;i++)
+	{
+		camp= obligatoris[i];
+		//alert("camp : "+camp + " value: "+formulari[camp].value );
+		if ( blancs (formulari[camp].value) )
+		{
+			missatge= missatge + "Heu d'emplenar el camp "+camp+".\n";	
+		};
+	};
+	
+	if (missatge!="")
+	{
+		alert(missatge);
+		return false;
+	};
+	return true;
+	
+};
+
+
+
+
+// codi interficie de Checkbox avançat
+
+	function checkbox_ovr (elem) {
+		if (mouse.left) {
+			elem.checked=!elem.checked;
+			checkbox_setSelect (elem);
+		};
+	};
+	
+	function checkbox_dwn (elem) {
+		elem.checked=!elem.checked;
+		checkbox_setSelect (elem);     
+		return false
+	};
+
+	function checkbox_setSelect (elem) {
+		elemName = elem.name;
+		elemName = elemName.substring(0,elemName.length-4 );
+		
+		if   (elem.form.elements[elemName])  {	
+	
+			elem.form.elements[elemName].value="";
+			
+				if (elem.form.elements[elem.name].length>1) { 
+			
+					for (i=0;i<elem.form.elements[elem.name].length;i++) {
+						if (elem.form.elements[elem.name][i].checked){
+							elem.form.elements[elemName].value +=","+elem.form.elements[elem.name][i].value
+						};
+					};
+				} else {
+					if (elem.form.elements[elem.name].checked){
+						elem.form.elements[elemName].value +=","+elem.form.elements[elem.name].value
+					};					
+				}	
+			
+		}else {
+			return false;
+		}	
+			
+		
+		elem.form.elements[elemName].value = elem.form.elements[elemName].value.substring(1);
+	
+	};
+	
+	function checkbox_all (elem) {
+		elemName = elem.name;
+		elemBase = elemName.substring(0,elemName.length-4 );
+		elemName = elemBase+"_chk";
+		elem.form.elements[elemBase].value="";
+		if   (elem.form.elements[elemName])  {		
+			if (elem.form.elements[elemName].length>1) { 
+				for (i=0;i<elem.form.elements[elemName].length;i++) {
+					elem.form.elements[elemName][i].checked=true
+					elem.form.elements[elemBase].value +=","+elem.form.elements[elemName][i].value
+				};
+			}
+			else  {
+				elem.form.elements[elemName].checked=true
+				elem.form.elements[elemBase].value +=","+elem.form.elements[elemName].value
+			}
+		} else {
+			return false;
+		}	
+		elem.form.elements[elemBase].value = elem.form.elements[elemBase].value.substring(1);
+		return false;
+	};
+	
+	function checkbox_non (elem) {
+		elemName = elem.name;
+		elemBase = elemName.substring(0,elemName.length-4 );
+		elemName = elemBase+"_chk";
+		elem.form.elements[elemBase].value="";
+		if   (elem.form.elements[elemName])  {		
+			if (elem.form.elements[elemName].length>1) {
+				for (i=0;i<elem.form.elements[elemName].length;i++) {
+					elem.form.elements[elemName][i].checked=false
+				};
+			}else {
+				elem.form.elements[elemName].checked=false
+			};	
+		}
+		return false; 
+	};
+	
+	
+	function checkbox_value (elem) {
+		if (elem.checked) {
+			checkbox_all (elem)
+		}else {
+			checkbox_non (elem)
+		};
+	};	
+	
+	
+	function checkbox_all_filter (elem,attb,filter) {
+		elemName = elem.name;
+		elemBase = elemName.substring(0,elemName.length-4 );
+		elemName = elemBase+"_chk";
+		elem.form.elements[elemBase].value="";
+		filtervalues = (new String(filter)).split(",");
+		
+		if   (elem.form.elements[elemName])  {		
+			if (elem.form.elements[elemName].length>1) {	
+				for (i=0;i<elem.form.elements[elemName].length;i++) {
+					for (j=0;j<filtervalues.length;j++) 
+					{
+						filtervalue=filtervalues[j].substring(filtervalues[j].lastIndexOf('.')+1)
+						if (elem.form.elements[elemName][i].getAttribute(attb)==filtervalue) 
+						{
+							elem.form.elements[elemName][i].checked=true;
+							elem.form.elements[elemBase].value +=","+elem.form.elements[elemName][i].value;
+						}
+						else
+						{
+							elem.form.elements[elemName][i].checked=false;
+						}
+					}
+				};
+			}
+			else {
+				for (j=0;j<filtervalues.length;j++) 
+				{
+					filtervalue=filtervalues[j].substring(filtervalues[j].lastIndexOf('.')+1)
+						if (elem.form.elements[elemName].getAttribute(attb)==filtervalue) 
+						{
+							elem.form.elements[elemName].checked=true;
+							elem.form.elements[elemBase].value +=","+elem.form.elements[elemName].value;
+						}
+						else
+						{
+							elem.form.elements[elemName].checked=false;
+						}
+					
+				}
+				
+				
+			}
+		} else {
+			return false;
+		}
+		
+		elem.form.elements[elemBase].value = elem.form.elements[elemBase].value.substring(1);
+		return false;
+	};		
+	
+	function checkbox_value_filter (elem,attb,filter) {   
+		if (elem.checked) {
+			if (filter=='all') {
+				checkbox_all(elem);
+			}
+			else{
+				checkbox_all_filter (elem,attb,filter)
+			}
+		}else {
+			checkbox_non (elem)
+		};
+	};		
+	
+	 
+		function checkbox_init(elem) {
+		elemName = elem.name;
+		elemBase = elemName;
+		elemName = elemBase+"_chk";
+		elem.form.elements[elemBase].value="";
+		for (i=0;i<elem.form.elements[elemName].length;i++) {
+			if (elem.form.elements[elemName][i].checked==true) {
+				elem.form.elements[elemBase].value +=","+elem.form.elements[elemName][i].value;
+			};
+		};
+		elem.form.elements[elemBase].value = elem.form.elements[elemBase].value.substring(1);
+		return false;
+	};	
+		
+	
+	
+		
+	
+	
+	
+	
+	function checkbox_up (elem) {
+	//	elem.checked=!elem.checked;
+		return false;
+	};
+	
+	function checkbox_clk (elem) {
+	//	elem.checked=!elem.checked;
+		return false;
+	};
+	
+	
+	
+	function form_val_files_notin (formElem) {
+		return true;
+	}
+	
+	
+	
+		
+function select_filter_filter(elem)
+{
+	elemName = elem.name;
+
+	elem_pos = elem.form.elements[elemName+"_pos"];
+	elem_sel = elem.form.elements[elemName+"_sel"];
+	elem_iok = elem.form.elements[elemName+"_iok"];
+	
+	
+	if ( elem_sel.options.length > elem_pos.options.length ) {
+		for (i=0; i<elem_sel.options.length; i++) {
+			elem_pos.options[elem_pos.options.length] = new Option (elem_sel.options[i].text,elem_sel.options[i].value);
+		}
+	}
+	
+	elemValue= elem.value;
+
+	for (i=elem_sel.options.length; i>0; i--) {
+		elem_sel.options[i-1]=null;
+	};
+	elem_iok.value="";
+
+	for (i=0; i<elem_pos.options.length; i++) {
+		
+		if (elem_pos.options[i].value.indexOf(elemValue)==0) {
+			elem_sel.options[elem_sel.options.length] = new Option (elem_pos.options[i].text,elem_pos.options[i].value);
+			if (elem_pos.options[i].value==elemValue) {
+				elem_iok.value=true;
+			};
+		};
+	};
+	
+}
+
+
+function select_filter_ok (elem){
+	elemName = elem.name;
+	elemName = elemName.substring(0,elemName.length-4 );
+	elem_iok = elem.form.elements[elemName+"_iok"];
+		
+	elem	 = elem.form.elements[elemName]       ;
+	elem_sel = elem.form.elements[elemName+"_sel"];
+	
+	elem_iok.value=true;
+	elem.value= elem_sel.options[elem_sel.selectedIndex].value;
+	
+}
+	
+	
+	
+	
+	
+	
+function disableSubmits(formElem) {
+			for (i=0;i<formElem.elements.length;i++) {
+					if (formElem.elements[i].type=="submit"){
+						formElem.elements[i].disabled=true;
+					};
+			};
+};
+
+
+function reenableSubmits(formElem) {
+			for (i=0;i<formElem.elements.length;i++) {
+					if (formElem.elements[i].type=="submit"){
+						formElem.elements[i].disabled=false;
+					};
+			};
+};
+
+
+
+function validaObligatorisIdioma (formulari)
+{ 
+	campsObligatoris = formulari.elements["obligatoris"].value;
+	idioma = formulari.elements["idioma"].value;
+ 	obligatoris = campsObligatoris.split(",");
+	missatge="";
+	
+	for (i=0; i< obligatoris.length;i++)
+	{
+		camp= obligatoris[i];
+		
+//		alert("camp : "+camp+ " value: "+formulari[camp].value+" type: "+formulari[camp].type );
+		
+		if (formulari[camp].type=="select-one") {
+			if (formulari[camp].value=="-1") {
+				if (idioma=="ca") {			missatge= missatge + "Heu de seleccionar "+camp+".\n";	 }
+		  	else if (idioma=="en") {missatge= missatge + "you should select: "+camp+".\n";	 }
+		  	else if (idioma=="es") {missatge= missatge + "Debe seleccionar "+camp+".\n";	 }
+				else {		 							missatge= missatge + "Heu de seleccionar "+camp+".\n";	}
+			}
+		}
+		else if (formulari[camp].type=="text") {
+			if ( blancs (formulari[camp].value) ){
+				if (idioma=="ca") {			missatge= missatge + "Heu d'emplenar el camp "+formulari[camp].alt+".\n";	 }
+			  else if (idioma=="en") {missatge= missatge + "You should fill: "+formulari[camp].alt+".\n";	 }
+			  else if (idioma=="es") {missatge= missatge + "Debe rellenar el campo "+formulari[camp].alt+".\n";	 }
+				else {		 							missatge= missatge + "Heu d'emplenar el camp "+formulari[camp].alt+".\n";	}
+			};
+		}
+		else if (formulari[camp].type=="textarea") {
+			if ( blancs (formulari[camp].value) ){
+				if (idioma=="ca") {			missatge= missatge + "Heu d'emplenar el camp "+camp+".\n";	 }
+			  else if (idioma=="en") {missatge= missatge + "You should fill: "+camp+".\n";	 }
+			  else if (idioma=="es") {missatge= missatge + "Debe rellenar el campo "+camp+".\n";	 }
+				else {		 							missatge= missatge + "Heu d'emplenar el camp "+camp+".\n";	}
+			};
+		}
+		else if (formulari[camp].type=="hidden") { 
+			if ( blancs (formulari[camp].value) ){
+				if (idioma=="ca") {			missatge= missatge + "Heu d'emplenar el camp "+formulari[camp].alt+".\n";	 }
+			  else if (idioma=="en") {missatge= missatge + "You should fill: "+formulari[camp].alt+".\n";	 }
+			  else if (idioma=="es") {missatge= missatge + "Debe rellenar el campo "+formulari[camp].alt+".\n";	 }
+				else {		 							missatge= missatge + "Heu d'emplenar el camp "+formulari[camp].alt+".\n";	}
+			};
+		};		
+		
+	};
+	
+	if (missatge!="")
+	{
+		alert(missatge);
+		return false;
+	};
+	return true;
+	
+};
+
+
+
+var invalidCaracters =",.;:/";
+
+
+function validaIdsIdioma(formulari)
+{ 
+	if ( formulari.elements["ids"] == null ) {
+		return true;
+	};
+	
+	campsIds = formulari.elements["ids"].value;
+	if (campsIds!='') {
+		idioma = formulari.elements["idioma"].value;
+	 	arrayIds = campsIds.split(",");
+		missatge="";
+		
+		for (i=0; i< arrayIds.length;i++)
+		{
+			camp= arrayIds[i];
+			if (formulari[camp].type=="text") {
+				strValue= formulari[camp].value;
+				if ( blancs (strValue) || !validaChars(strValue) ){
+					if (idioma=="ca") {			missatge= missatge + "Caracters Invalids a: "+formulari[camp].alt+".\n";	 }
+				  else if (idioma=="en") {missatge= missatge + "Caracters Invalids a: "+formulari[camp].alt+".\n";	 }
+				  else if (idioma=="es") {missatge= missatge + "Caracters Invalids a: "+formulari[camp].alt+".\n";	 }
+					else {		 							missatge= missatge + "Caracters Invalids a: "+formulari[camp].alt+".\n";	}
+				};
+			}
+			
+		};
+		
+		if (missatge!="")
+		{
+			stInvCars = "";
+			for (i=0;i<invalidCaracters.length;i++) {
+				stInvCars= stInvCars +"   '"+invalidCaracters[i]+"'  ";
+			}  
+			
+			if (idioma=="ca") {missatge= missatge + "\n Aquest/s camp/s no poden contenir els següents caràcters : "+stInvCars+" \n";	 }
+			else if (idioma=="en") {missatge= missatge + "\n These fields cann't contain the following characters: "+stInvCars+" \n";	 }
+			else if (idioma=="es") {missatge= missatge + "\n Estos campos no pueden contener los siguientes caracteres : "+stInvCars+" \n";	 }
+			else {missatge= missatge + "\n Aquest/s camp/s no poden contenir els següents caràcters : "+stInvCars+" \n";	 }
+				
+			
+			alert(missatge);
+			return false;
+		};
+		return true;
+	}
+	else {
+		return true;
+	}
+};
+
+
+function validaChars(strValue) {
+	
+	for (i=0;i<invalidCaracters.length;i++) {
+		if (strValue.indexOf(invalidCaracters[i])>0) return false
+		
+	}
+	
+	
+	return true;
+	
+};
+
+
+function formBasicVal (formElem) { 
+	
+			returnval=false;	
+			disableSubmits(formElem)
+ 			
+ 			returnval = validaObligatorisIdioma(formElem);
+ 			returnval = returnval && validaIdsIdioma(formElem) ;
+ 		
+ 		
+			if (returnval==false){
+				reenableSubmits(formElem)
+			}
+
+			return returnval;
+	
+} 
+
+ 
+function dateInput_val(elem) {
+	
+};
+
+
+function dateInput_openSel(elem) {
+	
+};
+
+
+
+
+
+
+
+
+
+/// Selector d'usuaris amb filtre
+
+
+function select_optionValues_toString (elem)
+{
+	str="";
+
+	for (i=0; i<elem.options.length; i++) {
+		str= str+","+elem.options[i].value;
+	}
+	return str.substring(1);
+};
+
+
+
+function  select_filtered_add (elem)
+{
+	elemName = elem.name;
+	elemName = elemName.substring(0,elemName.lastIndexOf('_') ); 
+
+	elem	 = elem.form.elements[elemName]       ;
+	elem_pos = elem.form.elements[elemName+"_filtered"];
+	elem_sel = elem.form.elements[elemName+"_sel"];
+	
+	toRemove= new Array ();
+
+	for (i=0; i<elem_pos.options.length; i++) {
+		if (elem_pos.options[i].selected) {
+			elemValues = ","+elem.value +",";
+			if (elemValues.indexOf(","+elem_pos.options[i].value+",") <0 ) {  // si no hi es el puc afegir
+				elem_sel.options[elem_sel.options.length] = new Option (elem_pos.options[i].text,elem_pos.options[i].value);
+			}
+			toRemove[toRemove.length]=i; // de totes formes encare que no l'hagi afegit perque hi es el treure de la llista de posibles
+		};
+	};
+	
+	for (i=toRemove.length; i>0; i--) {
+		elem_pos.options[toRemove[i-1]]=null;
+	};	
+
+	elem_sel.selectedIndex=-1;    
+	
+	elem.value= select_optionValues_toString (elem_sel);
+
+};
+
+function  select_filtered_rem (elem)
+{
+	elemName = elem.name;
+	elemName = elemName.substring(0,elemName.lastIndexOf('_') ); 
+
+	
+	elem	 = elem.form.elements[elemName]       ;
+	elem_original = elem.form.elements[elemName+"_pos"];
+	elem_pos = elem.form.elements[elemName+"_sel"];
+	elem_sel = elem.form.elements[elemName+"_filtered"];
+	elem_filter = elem.form.elements[elemName+"_filter"];
+	
+	toRemove= new Array ();
+
+	for (i=0; i<elem_pos.options.length; i++) {
+		if (elem_pos.options[i].selected) {
+			// si el text no esta en el filtre pos no el torno a posal als elements filtrats 
+			
+			if ( (elem_filter.value=="")  ||  elem_pos.options[i].text.indexOf(elem_filter.value)==0 ) {
+			// no a d'estar a la llista dels que es poden clicar ara
+				needAddtoSelectables=true;
+				for (j=0; j<elem_sel.options.length; j++){
+					if (elem_sel.options[j].value==elem_pos.options[i].value) 
+					{
+						needAddtoSelectables = needAddtoSelectables && false 
+					};
+				}
+				//  pero ha d'estar a la llista dels que hi pot haver per tant a la llista de posibles 
+				if (needAddtoSelectables==true) {
+					needAddtoSelectables=false ;
+					for (j=0; j<elem_original.options.length; j++){
+						if (elem_original.options[j].value==elem_pos.options[i].value) 
+						{
+							needAddtoSelectables = true; 
+						};
+					}
+				}
+				if (needAddtoSelectables==true) {
+					elem_sel.options[elem_sel.options.length] = new Option (elem_pos.options[i].text,elem_pos.options[i].value);
+				}
+			}
+			toRemove[toRemove.length]=i;
+		};
+	};
+	
+	for (i=toRemove.length; i>0; i--) {
+		elem_pos.options[toRemove[i-1]]=null;
+	};	
+	
+	elem_sel.selectedIndex=-1;    
+	
+	elem.value= select_optionValues_toString (elem_pos);
+
+};
+
+
+
+function URL_treure_paramete(laUrl, elparametre) {
+	URLDesti   = laUrl+"";
+	elemAssign = elparametre+"="; 
+	if (URLDesti.indexOf(elemAssign)>0 ) {
+			partEsquerra=URLDesti.substring(0,URLDesti.indexOf(elemAssign));
+			partDreta   =URLDesti.substring(URLDesti.indexOf(elemAssign));
+			if (partDreta.indexOf("&")>0) {
+				partDreta= partDreta.substring(partDreta.indexOf("&"));
+			}
+			URLDesti=partEsquerra+partDreta;
+	};
+	return URLDesti;
+}
+
+
+function URL_add_anchor(laUrl, lanchor) {
+	URLDesti   = laUrl+"";
+	if (URLDesti.indexOf("#")>0 ) {
+			partEsquerra=URLDesti.substring(0,URLDesti.indexOf("#"));
+			URLDesti=partEsquerra;
+	}
+	URLDesti=URLDesti+"#"+lanchor;
+	return URLDesti;
+}
+
+
+
+function select_mult_text_filter(elem)
+{
+	elemName = elem.name;
+	elemName = elemName.substring(0,elemName.lastIndexOf('_') ); 
+	elem_pos = elem.form.elements[elemName+"_pos"];
+	elem_sel = elem.form.elements[elemName+"_filtered"];
+	
+	elemValue= elem.value;
+
+	for (i=elem_sel.options.length; i>0; i--) {
+		elem_sel.options[i-1]=null;
+	};
+ 
+	myStrregExp = ""+elemValue+"";
+	myRegExpExp= new RegExp(myStrregExp,"i");
+	
+	
+	for (i=0; i<elem_pos.options.length; i++) {
+		actualOptionVal = ""+elem_pos.options[i].text;
+		if (actualOptionVal.match(myRegExpExp)) {
+			elem_sel.options[elem_sel.options.length] = new Option (elem_pos.options[i].text,elem_pos.options[i].value);
+		};
+	};
+}
+
+
+
+function loader_sel_refresh(elem) {
+	if (elem.value!="-1") {
+		elemName = elem.name;
+		if ( elemName.indexOf('_') >0) { 
+			elemName = elemName.substring(0,elemName.lastIndexOf('_') ); 
+		}
+		
+		URLDesti = URL_treure_from_params(this.location,elem.form);
+//		URLDesti = URL_treure_paramete(this.location,elem.name);
+		URLDesti = URL_add_anchor(URLDesti,elemName);
+		elem.form.action=URLDesti;
+		
+		elem.form.enctype= "";
+		elem.form.submit();
+	} else {
+		
+	} 
+}
+
+function loader_sel_refresh_disable_select(elem,elemNameDis) {
+	if (elem.value!="-1") {
+		elemName = elem.name;
+		if ( elemName.indexOf('_') >0) { 
+			elemName = elemName.substring(0,elemName.lastIndexOf('_') ); 
+		}
+		
+		URLDesti = URL_treure_from_params(this.location,elem.form);
+//		URLDesti = URL_treure_paramete(this.location,elem.name);
+//		URLDesti = URL_treure_paramete(URLDesti,elemName);
+		URLDesti = URL_add_anchor(URLDesti,elemName);
+		elem.form.action=URLDesti; 
+
+		setSelect (elem.form.elements[elemNameDis],"-1");
+		elem.form.enctype= "";
+		elem.form.submit();
+	} else {
+		
+	}
+}  
+
+
+
+ 
+
+
+
+
+function  select_add (elem)
+{
+	elemName = elem.name;
+	elemName = elemName.substring(0,elemName.lastIndexOf('_') ); 
+
+	elem	 = elem.form.elements[elemName]       ;
+	elem_pos = elem.form.elements[elemName+"_pos"];
+	elem_sel = elem.form.elements[elemName+"_sel"];
+	
+	toRemove= new Array ();
+
+	for (i=0; i<elem_pos.options.length; i++) {
+		if (elem_pos.options[i].selected) {
+			elemValues = ","+elem.value +",";
+			if (elemValues.indexOf(","+elem_pos.options[i].value+",") <0 ) {  // si no hi es el puc afegir
+				elem_sel.options[elem_sel.options.length] = new Option (elem_pos.options[i].text,elem_pos.options[i].value);
+			}
+			toRemove[toRemove.length]=i; // de totes formes encare que no l'hagi afegit perque hi es el treure de la llista de posibles
+		};
+	};
+	
+//	for (i=toRemove.length; i>0; i--) {
+//		elem_pos.options[toRemove[i-1]]=null;
+//	};	
+
+	elem_sel.selectedIndex=-1;    
+	
+	elem.value= select_optionValues_toString (elem_sel);
+
+};
+
+function  select_rem (elem)
+{
+	elemName = elem.name;
+	elemName = elemName.substring(0,elemName.lastIndexOf('_') ); 
+
+	
+	elem	 = elem.form.elements[elemName]       ;
+	elem_pos = elem.form.elements[elemName+"_sel"];
+	
+	toRemove= new Array ();
+
+	for (i=0; i<elem_pos.options.length; i++) {
+		if (elem_pos.options[i].selected) {
+			toRemove[toRemove.length]=i;
+		};
+	};
+	
+	for (i=toRemove.length; i>0; i--) {
+		elem_pos.options[toRemove[i-1]]=null;
+	};	
+	
+	elem_sel.selectedIndex=-1;    
+	
+	elem.value= select_optionValues_toString (elem_pos);
+
+};
+
+ 
+
+
+function URL_treure_from_params (theURL, theFrom) {
+	theURL =theURL+"";
+	var idx = theURL.indexOf('?');
+	if (idx != -1) {
+		
+		var pairs = theURL.substring(idx+1, document.URL.length).split('&');
+		theURL = theURL.substring(0,idx);
+		var parametres="";
+		for (var i=0; i<pairs.length; i++) 
+		{
+			nameVal = pairs[i].split('=');
+			if (theFrom.elements[nameVal[0]]==null) {
+				parametres = parametres +"&"+pairs[i];
+			}
+		}
+		if (parametres!="")
+		{
+			parametres=parametres.substring(1);
+			theURL=theURL+"?"+parametres;
+		}
+	}
+	
+	return theURL;	
+
+	
+}
+
+
+function ismaxlength(obj){
+	var mlength=obj.getAttribute? parseInt(obj.getAttribute("maxlength")) : ""
+	if (obj.getAttribute && obj.value.length>mlength)
+	{
+		missatge="";
+		idioma = obj.form.elements["idioma"].value;
+		if (idioma=="ca")      {missatge="Limit excedit al camp"+obj.getAttribute("alt")+".\n";	 }
+		else if (idioma=="en") {missatge="Limit exceded in the field"+obj.getAttribute("alt")+".\n";	 }
+		else if (idioma=="es") {missatge="Limite excedido en el campo"+obj.getAttribute("alt")+".\n";	 }
+		else {		 			missatge="Limit excedit al camp"+obj.getAttribute("alt")+".\n";	}
+		
+		alert(missatge)
+	}
+}

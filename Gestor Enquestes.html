@@ -1,0 +1,3263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0127)https://enquestes.uab.cat/enquestes/interficie/veureresultats.jsp?filterby=102343_511&ide=17267&obligatoris=filterby&idioma=es# -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca" class="gr__enquestes_uab_cat"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<meta http-equiv="Content-Type" content="text/html; charset=" iso-8859-1"="">
+	<meta http-equiv="Pragma" content="no-cache">
+		
+	<title>Gestor Enquestes</title>	
+	
+	<link href="./Gestor Enquestes_files/enquesta.css" type="text/css" rel="stylesheet">
+	<link href="./Gestor Enquestes_files/jquery.ui.datepicker.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" language="javascript" src="./Gestor Enquestes_files/jquery-1.6.2.min.js.download"></script>
+	<script type="text/javascript" src="./Gestor Enquestes_files/jquery.ui.datepicker.js.download"></script>
+	<script type="text/javascript" src="./Gestor Enquestes_files/jquery.ui.datepicker-ca.js.download"></script>
+	<script type="text/javascript" src="./Gestor Enquestes_files/forms.js.download"></script>
+	<script type="text/javascript">
+		$(document).ready( function() {
+				$('form input.data').datepicker({dateFormat: 'dd/mm/yy', firstDay: 1});
+			});
+	</script>
+</head>
+<div class="gr-top-z-index gr-top-zero" tabindex="-1"><div class="_30JeG Tl7FF" style="transform: translate(999.323px, 3100.32px);"><div class="_2A3ER"><div class="_1y1wn _2R8DE undefined"></div><div class="_24Em3"><div style="display: initial;"><div class="_21QaI _1L80j" tabindex="-1"></div></div></div><div class="_2-7o4"></div><div class="_24Em3"><div style="display: initial;"><div class="_21QaI _1pbTT" data-action="editor" tabindex="-1"></div></div></div></div></div></div><div style="visibility: hidden; top: -9999px; position: absolute; opacity: 0;"><div class="_30JeG Tl7FF" style="transform: translate(1068.32px, 3115.32px);"><div class="_2A3ER"><div class="_1y1wn _2R8DE undefined"></div><div class="_24Em3"><div style="display: initial;"><div class="_21QaI _1L80j" tabindex="-1"></div></div></div><div class="_2-7o4"></div><div class="_24Em3"><div style="display: initial;"><div class="_21QaI _1pbTT" data-action="editor" tabindex="-1"></div></div></div></div></div></div><div style="visibility: hidden; top: -9999px; position: absolute; opacity: 0;"></div><body data-gr-c-s-loaded="true">
+	
+	<div id="pagina" class="pagina">
+
+
+
+
+
+
+		
+<div id="header" class="header">
+	<div class="entitat">
+		<a href="http://www.uab.cat/">Universitat Autònoma de Barcelona</a>
+	</div>
+
+	<div class="logo">
+		<div class="logo_text">
+		<h1><a href="https://enquestes.uab.cat/enquestes/interficie/index.jsp">Aplicatiu d'Enquestes</a></h1>
+			<div class="tagline">Universitat Autònoma de Barcelona</div>
+		
+		</div>
+	</div>
+
+	<div class="eines">
+		
+
+				
+
+
+
+<ul>
+	<li class="cap_infouser">Jorge Andres Velez Ospina</li>
+	<li class="sortir"><a href="https://enquestes.uab.cat/enquestes/logout.jsp">sortir</a></li>
+</ul>
+ 
+	</div>
+
+	<div class="pestanya">
+		<ul class="pestanyes">
+			<li class="activa">
+				<a href="https://enquestes.uab.cat/interficie/index.jsp">Inici</a>
+			</li>
+			
+			
+				<li>
+					<a href="https://enquestes.uab.cat/interficie/veureresultats.jsp?accio=resultats">Gestió d'enquestes</a>
+				</li>
+				
+			
+			
+			
+			
+			
+			
+		</ul>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+			
+<style type="text/css">
+		.clearfix:after { content: "."; display:block; height:0; clear:both; visibility:hidden; }
+		.clearfix { display:inline-block; }		
+		* html .clearfix { height:1%; }
+		.clearfix { display:block; }
+
+		.chartBlock {
+			font-size:62.5%;
+			color: #444;
+			font-family:arial;
+			margin: 1em 0 2em 50px; position: relative;
+		}
+
+		.chartBlock  canvas{background:#fff; display: block; border: 1px solid #ddd;}
+		
+		div.chart {
+			float:right;
+			padding: 1em;
+			clear: right;
+			margin-top: 0;
+		}
+	</style>
+
+<script type="text/javascript" language="javascript" src="./Gestor Enquestes_files/jquery.flot.js.download"></script>
+<script type="text/javascript" language="javascript" src="./Gestor Enquestes_files/jquery.flot.pie.js.download"></script>
+	<script>
+				
+			dibuixaQuesito = function (data,idp)  { 
+							   
+				$.plot($("#placeholder"+idp), data,
+				{
+				        	           
+				          series: {
+					            pie: { 
+					                show: true,
+					                radius: 1,
+					                innerRadius: 1/4,
+					                label: {
+					                    show: true, 
+					                    radius: 5/8,
+					                    formatter: function(label, series){
+					                        return '<div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">'+Math.round(series.percent)+'%</div>';
+					                    }, 
+					                    background: { opacity: 0.5 }
+					                }
+					            	}
+					           },					          
+										legend: {
+														show: true
+					          	      }  			
+				});
+			}
+				
+	</script>
+	
+	<script id="source" language="javascript" type="text/javascript">
+	
+	dibuixaGrafica = function (data)  { 
+    
+    var options = {
+    	
+        xaxis: { mode: "time" },
+
+        series: {
+            lines: { show: true },
+            points: { show: true }
+        },
+        legend: { noColumns: 2 },
+        grid : {"hoverable":true}
+    };
+
+   $.plot($("#placeholder2"), data, options);
+
+}
+</script>
+<script language="javascript" type="text/javascript">
+
+$(document).ready(function() {
+			 /**
+			   * Flot tooltips.
+			   */
+			  $('.flot-graph:not(.datum-processed)').each(function() {
+			    var graph = $(this)
+			    var popup = $('.flot-popup', this);
+			    $('.flot-canvas', this).bind('plothover', function (event, pos, item) {
+			      if (item) {
+			        var parent = graph.offset();
+			
+			        var num = parseFloat(item.datapoint[1]);
+			       
+			        html = ''			        
+			        html +=  ' <div class="num">' +num+ '</div>';
+			       	 	
+			        popup
+			        	.css("left", item.pageX - parent.left)
+			          .css("top", item.pageY - parent.top)
+			          .html(html)
+			          .show();
+			      }
+			      else {
+			        popup.fadeOut('fast');
+			      }
+			    });
+			    $('.flot-canvas', this).bind('mouseleave', function () {
+			      $('.flot-popup').fadeOut('fast');
+			    });
+			  }).addClass('datum-processed');
+			});
+
+
+</script>	
+
+<style>
+
+.flot-graph{position:relative;}	
+	
+.flot-popup{
+	display:none;
+	position:absolute;
+	font-size:11px;
+	text-align:center;
+	white-space:nowrap;
+	margin-left:-33px;
+	margin-top:-75px;
+	width:55px;
+	height:20px;	
+	padding:3px 0px 13px 3px;
+	color:#666;
+	z-index:9999;
+	border:1px solid #ddd;
+	background-color:#eee;
+	}
+	
+
+.flot-popup .num  {
+	font-size:14px;
+	 font-weight: bold;
+    font-family: Georgia;
+    margin:1px 5px 1px 5px;
+	
+	}
+</style>
+
+	
+
+<div class="continguts" id="colcontinguts100">
+	<div class="contenidor">
+	
+		
+
+<div id="clear"></div>
+
+
+		
+
+
+
+
+
+
+	
+	
+
+
+
+	
+	
+
+
+
+
+ 
+ 		
+		
+		
+		
+	  
+	  
+	   
+	  
+	              
+ 
+
+
+
+	
+<h2>Resultats</h2>
+
+<b>Enquesta: #17267 Enquesta d'avaluació de l'assignatura 102343 : Economia de l'Empresa I </b><a href="https://enquestes.uab.cat/enquestes/interficie/exportarExcel.jsp?ide=17267"><img src="./Gestor Enquestes_files/excelicon.png" alt="Descarrega Excel" border="0" height="42" width="42"></a>
+	
+<ul>
+		<li>Descripcio: Els programes formatius que ofereix la UAB estan sotmesos a un procés de millora continuada i, per tant, és necessari comptar amb un sistema que reculli les valoracions que fan els diferents col·lectius implicats, fonamentalment professors i estudiants, de les assignatures que conformen els plans d'estudi.
+
+L'opinió dels estudiants és bàsica a l'hora de detectar els punts forts i els febles de cadascuna de les assignatures: està ben estructurada?, la càrrega de treball es la adient?, es segueix la programació explicada a la Guia Docent?, saps com t'avaluaran?.... etc..
+
+Si us plau, contesta aquesta enquesta. Et portarà poc temps i contribuiràs a millorar la docència de la nostra universitat. Ara, el que posa les notes ets tu!.
+
+Gràcies.
+
+Contacte: Oficina de Qualitat Docent(OQD) enquestes.oqd@uab.cat</li>
+		<li>L'enquesta finalitza: 16/06/2016</li>
+		<li>Convocats: El/s grup/s: <b>102343</b>, amb un total de <b>524 persones</b>.</li>
+		<li>Respost: Han respost l'enquesta un total de <b>85 persones.</b></li>
+</ul>
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	  
+							   			
+							   			
+											
+											
+											
+											
+											
+											
+																														
+	
+			
+			
+			
+  		<script>
+					$(document).ready( function(){
+						dibuixaGrafica([{"label": "Respostes per dia", "data": [[1463090400000,11],[1463176800000,2],[1463263200000,6],[1463349600000,5],[1463436000000,4],[1463522400000,4],[1463608800000,4],[1463695200000,1],[1463781600000,1],[1463868000000,1],[1463954400000,1],[1464213600000,4],[1464300000000,5],[1464386400000,1],[1464472800000,2],[1464559200000,3],[1464645600000,3],[1464732000000,1],[1464818400000,5],[1464904800000,2],[1464991200000,1],[1465077600000,1],[1465250400000,4],[1465336800000,2],[1465423200000,3],[1465509600000,2],[1465682400000,1],[1465768800000,1],[1465855200000,3],[1465941600000,1]]}]);
+					});
+			</script>
+	<div class="flot-graph datum-processed">	
+		<div id="placeholder2" class="flot-canvas" style="width: 900px; height: 300px; position: relative;"><canvas width="900" height="300"></canvas><canvas width="900" height="300" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="tickLabels" style="font-size:smaller;color:#545454"><div style="position:absolute;top:284px;left:39px;width:69.23076923076923px;text-align:center" class="tickLabel">May 15</div><div style="position:absolute;top:284px;left:119px;width:69.23076923076923px;text-align:center" class="tickLabel">May 18</div><div style="position:absolute;top:284px;left:198px;width:69.23076923076923px;text-align:center" class="tickLabel">May 21</div><div style="position:absolute;top:284px;left:278px;width:69.23076923076923px;text-align:center" class="tickLabel">May 24</div><div style="position:absolute;top:284px;left:357px;width:69.23076923076923px;text-align:center" class="tickLabel">May 27</div><div style="position:absolute;top:284px;left:436px;width:69.23076923076923px;text-align:center" class="tickLabel">May 30</div><div style="position:absolute;top:284px;left:516px;width:69.23076923076923px;text-align:center" class="tickLabel">Jun 2</div><div style="position:absolute;top:284px;left:595px;width:69.23076923076923px;text-align:center" class="tickLabel">Jun 5</div><div style="position:absolute;top:284px;left:674px;width:69.23076923076923px;text-align:center" class="tickLabel">Jun 8</div><div style="position:absolute;top:284px;left:754px;width:69.23076923076923px;text-align:center" class="tickLabel">Jun 11</div><div style="position:absolute;top:284px;left:833px;width:69.23076923076923px;text-align:center" class="tickLabel">Jun 14</div><div style="position:absolute;top:269px;right:888px;width:12px;text-align:right" class="tickLabel">0</div><div style="position:absolute;top:224px;right:888px;width:12px;text-align:right" class="tickLabel">2</div><div style="position:absolute;top:179px;right:888px;width:12px;text-align:right" class="tickLabel">4</div><div style="position:absolute;top:135px;right:888px;width:12px;text-align:right" class="tickLabel">6</div><div style="position:absolute;top:90px;right:888px;width:12px;text-align:right" class="tickLabel">8</div><div style="position:absolute;top:45px;right:888px;width:12px;text-align:right" class="tickLabel">10</div><div style="position:absolute;top:0px;right:888px;width:12px;text-align:right" class="tickLabel">12</div></div><div class="legend"><div style="position: absolute; width: 135px; height: 23px; top: 13px; right: 13px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:13px;right:13px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Respostes per dia</td></tr></tbody></table></div></div>
+		<div class="flot-popup" style="left: 177.323px; top: 187.271px; display: none;"> <div class="num">4</div></div>
+
+	</div>
+	<br>
+	
+		
+			
+
+	<div id="einesGenItems">
+					<div id="filtres">
+						
+						<form action="https://enquestes.uab.cat/enquestes/interficie/veureresultats.jsp?filterby=102343_511&amp;ide=17267&amp;obligatoris=filterby&amp;idioma=es#">
+							Filtra per grups
+
+							<select name="filterby" id="filterby" onchange="if(validaObligatorisIdioma(this.form)) submit(this.form)">
+								<option value="">Tots els grups</option>
+								 
+								 		
+								 		<option value="102343_51">102343_51</option>
+								 
+								 		
+								 		<option value="102343_1">102343_1</option>
+								 
+								 		
+								 		<option value="102343_60">102343_60</option>
+								 
+								 		
+								 		<option value="102343_52">102343_52</option>
+								 
+								 		
+								 		<option value="102343_8">102343_8</option>
+								 
+								 		
+								 		<option value="102343_4">102343_4</option>
+								 
+								 		
+								 		<option value="102343_2">102343_2</option>
+								 
+								 		
+								 		<option selected="" value="102343_511">102343_511</option>
+								 
+									
+							</select>
+							<input type="hidden" name="ide" value="17267">
+							<input type="hidden" name="obligatoris" value="filterby">
+							<input type="hidden" name="idioma" value="es">
+						</form>
+					</div>
+		</div>	
+	
+	
+	
+			
+			
+			<table class="tablesorter">
+				<tbody><tr><th>Id Pregunta#Tipus</th><th>Pregunta</th><th>Resposta</th><th>Total</th>
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				 	        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+											
+										
+								 	 
+								   		</tr><tr class="odd"><td><b>229200#radio</b></td><td colspan="2"><b>Durant el present curs acadèmic, la meva assistència a les activitats presencials d'aquesta assignatura ha estat:</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Baixa (25% - 50%)</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Relativament alta (51% - 75%)</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Pràcticament total (76% - 100%)</b></td>
+												<td><b>5</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Pràcticament nul·la ( 0% - 24%)</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+											
+										
+									 	 	<tr><td></td><td></td><td></td><td>Total: <b>5</b></td></tr>
+								   	
+								 	 
+								   		<tr class="odd"><td><b>229201#radio</b></td><td colspan="2"><b>En mitjana, el nombre d'hores setmanals que he dedicat a aquest mòdul, fora de les hores presencials, ha estat:</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Menor a 2 hores</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>De 2 a 4 hores</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>De 5 a 7 hores</b></td>
+												<td><b>2</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>De 8 a 10 hores</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Més de 10 hores</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				 	        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				 	        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+											
+										
+									 	 	<tr><td></td><td></td><td></td><td>Total: <b>5</b></td></tr>
+								   	
+								 	 
+								   		<tr class="odd"><td><b>229204#radio</b></td><td colspan="2"><b>Fins ara s'ha seguit la programació de la assignatura que s'explica en la Guia Docent.</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt en desacord</b></td>
+												<td><b>2</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>En desacord</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Indiferent</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>D'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt d'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+											
+										
+									 	 	<tr><td></td><td></td><td></td><td>Total: <b>5</b></td></tr>
+								   	
+								 	 
+								   		<tr class="odd"><td><b>229205#radio</b></td><td colspan="2"><b>El material del curs (presentacions en classe, enunciats de problemes o casos, guions de seminaris i pràctiques, lectures, bibliografia de consulta, etc.) està ben preparat i resulta útil</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt en desacord</b></td>
+												<td><b>2</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>En desacord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Indiferent</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>D'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt d'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+											
+										
+									 	 	<tr><td></td><td></td><td></td><td>Total: <b>5</b></td></tr>
+								   	
+								 	 
+								   		<tr class="odd"><td><b>229206#radio</b></td><td colspan="2"><b>El sistema d'avaluació s'explica clarament a la Guia Docent de l'assignatura</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt en desacord</b></td>
+												<td><b>2</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>En desacord</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Indiferent</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>D'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt d'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+											
+										
+									 	 	<tr><td></td><td></td><td></td><td>Total: <b>5</b></td></tr>
+								   	
+								 	 
+								   		<tr class="odd"><td><b>229207#radio</b></td><td colspan="2"><b>Els continguts de les proves i d'altres activitats d'avaluació es corresponen amb els continguts del curs i  també es correspon amb el temps que els professors van dedicar a cada tema</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt en desacord</b></td>
+												<td><b>2</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>En desacord</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Indiferent</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>D'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt d'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+											
+										
+									 	 	<tr><td></td><td></td><td></td><td>Total: <b>5</b></td></tr>
+								   	
+								 	 
+								   		<tr class="odd"><td><b>229208#radio</b></td><td colspan="2"><b>Considerant el nombre de crèdits de l'assignatura, la càrrega de treball de l'estudiant és la adient</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt en desacord</b></td>
+												<td><b>2</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>En desacord</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Indiferent</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>D'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt d'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+											
+										
+									 	 	<tr><td></td><td></td><td></td><td>Total: <b>5</b></td></tr>
+								   	
+								 	 
+								   		<tr class="odd"><td><b>229209#radio</b></td><td colspan="2"><b>Amb aquesta assignatura estic aprenent coses que considero valuoses per la meva formació</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt en desacord</b></td>
+												<td><b>2</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>En desacord</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Indiferent</b></td>
+												<td><b>0</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>D'acord</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Molt d'acord</b></td>
+												<td><b>2</b></td>
+									   	</tr>
+									 	
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+											
+										
+									 	 	<tr><td></td><td></td><td></td><td>Total: <b>5</b></td></tr>
+								   	
+								 	 
+								   		<tr class="odd"><td><b>229210#txt</b></td><td colspan="2"><b>Indica quins són, al teu parer, els punts forts i els punts febles d'aquesta assignatura:</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>No me gusta esta asignatura.</b></td>
+												<td><b>1</b></td>
+									   	</tr>
+									 	
+									   	
+										
+							     
+							   			
+							   			
+											
+											
+										 
+											<tr>
+												<td></td><td></td>
+												<td><b>Resposta oberta</b></td>
+												<td><b>4</b></td>
+									   	</tr>
+									 	
+									   	
+										
+							   
+						        
+			
+			
+			<tr><td></td><td></td><td></td><td>Total: <b>5</b></td></tr>
+			
+			</tbody></table> 
+			
+			<div id="clear"></div>
+			
+			
+			<br><h3>Gràfics</h3><br>
+			<table class="tablesorter">
+				<tbody><tr><th>Id Pregunta#Tipus</th><th>Pregunta</th><th></th><th>Total</th>
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				 	        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+								
+								
+								
+								
+									
+								 	 
+								   		</tr><tr class="odd"><td><b>229200#radio</b></td><td colspan="2"><b>Durant el present curs acadèmic, la meva assistència a les activitats presencials d'aquesta assignatura ha estat:</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+								
+								
+								
+								
+									
+								 	 
+									 	 		
+									   	
+											
+											<script>
+												
+												$(document).ready( function(){
+													dibuixaQuesito([{"label": "Pràcticament nul·la ( 0% - 24%): 0","data":0},{"label": "Pràcticament total (76% - 100%): 5","data":5},{"label": "Relativament alta (51% - 75%): 0","data":0},{"label": "Baixa (25% - 50%): 0","data":0}],229200);
+												});
+											</script>
+											<tr><td></td><td><div id="placeholder229200" style="width: 900px; height: 250px; position: relative;"><canvas width="900" height="250"></canvas><canvas width="900" height="250" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="legend"><div style="position: absolute; width: 199px; height: 89px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Pràcticament nul·la ( 0% - 24%): 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">Pràcticament total (76% - 100%): 5</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">Relativament alta (51% - 75%): 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(77,167,77);overflow:hidden"></div></div></td><td class="legendLabel">Baixa (25% - 50%): 0</td></tr></tbody></table></div><div class="pieLabelBackground" style="position: absolute; width: 45px; height: 26px; top: 190px; left: 328px; background-color: rgb(175, 216, 248); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 190px; left: 328px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">100%</div></span></div></td><td></td><td>Total: <b>5</b></td></tr>
+								   		<tr><td></td><td><div id="textCopy229201" style="width: auto; overflow: hidden;">Pots incrustar aquest gràfic a la teva pàgina web. Text a copiar<grammarly-ghost spellcheck="false"><div data-id="20bda560-7c44-b4b6-567e-6cca1b9fda6f" data-gramm_id="20bda560-7c44-b4b6-567e-6cca1b9fda6f" data-gramm="gramm" data-gramm_editor="true" class="gr_ver_2" gramm="true" contenteditable="true" style="position: absolute; color: transparent; overflow: hidden; white-space: pre-wrap; border-radius: 0px; box-sizing: content-box; height: 62.6458px; width: 900px; margin: 3072px 0px 6.66665px 160px; padding: 5.33332px; z-index: 0; border-width: 1px; border-style: solid; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255); top: 0px; left: 0px;"><span style="display: inline-block; font: 400 13.3333px monospace; color: transparent; overflow: hidden; text-align: left; float: initial; clear: none; box-sizing: border-box; vertical-align: baseline; white-space: pre-wrap; width: 100%; margin: 0px; padding: 0px; border: 0px; letter-spacing: normal; text-shadow: none; height: 61px;"></span><br></div></grammarly-ghost><textarea style="width: 900px; height: 50px; z-index: auto; position: relative; line-height: normal; font-size: 13.3333px; transition: none 0s ease 0s; background: transparent !important;" data-gramm="true" data-txt_gramm_id="20bda560-7c44-b4b6-567e-6cca1b9fda6f" data-gramm_id="20bda560-7c44-b4b6-567e-6cca1b9fda6f" spellcheck="false" data-gramm_editor="true">&lt;iframe src="https://mato.uab.cat:8443/enquestes/public/veureresultatsPregunta.jsp?idp=229200&amp;check=549335.0054347826" height="200" width="350"&gt;&lt;/iframe&gt;</textarea><grammarly-btn><div class="_1BN1N Kzi1t _2DJZN" style="z-index: 2; transform: translate(1042.32px, 3104.32px);"><div class="_1HjH7"><div title="Protected by Grammarly" class="_3qe6h">&nbsp;</div></div></div></grammarly-btn></div></td><td></td><td></td></tr>
+								   		
+											
+											
+											
+								   
+								   		<tr class="odd"><td><b>229201#radio</b></td><td colspan="2"><b>En mitjana, el nombre d'hores setmanals que he dedicat a aquest mòdul, fora de les hores presencials, ha estat:</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				 	        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				 	        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+								
+								
+								
+								
+									
+								 	 
+									 	 		
+									   	
+											
+											<script>
+												
+												$(document).ready( function(){
+													dibuixaQuesito([{"label": "Més de 10 hores: 1","data":1},{"label": "De 8 a 10 hores: 0","data":0},{"label": "De 5 a 7 hores: 2","data":2},{"label": "De 2 a 4 hores: 1","data":1},{"label": "Menor a 2 hores: 1","data":1}],229201);
+												});
+											</script>
+											<tr><td></td><td><div id="placeholder229201" style="width: 900px; height: 250px; position: relative;"><canvas width="900" height="250"></canvas><canvas width="900" height="250" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="legend"><div style="position: absolute; width: 131px; height: 112px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Més de 10 hores: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">De 8 a 10 hores: 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">De 5 a 7 hores: 2</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(77,167,77);overflow:hidden"></div></div></td><td class="legendLabel">De 2 a 4 hores: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(148,64,237);overflow:hidden"></div></div></td><td class="legendLabel">Menor a 2 hores: 1</td></tr></tbody></table></div><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 49px; left: 413px; background-color: rgb(237, 194, 64); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 49px; left: 413px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 175px; left: 413px; background-color: rgb(203, 75, 75); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel2" style="position: absolute; top: 175px; left: 413px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">40%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 136px; left: 293px; background-color: rgb(77, 167, 77); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel3" style="position: absolute; top: 136px; left: 293px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 49px; left: 321px; background-color: rgb(148, 64, 237); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel4" style="position: absolute; top: 49px; left: 321px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span></div></td><td></td><td>Total: <b>5</b></td></tr>
+								   		<tr><td></td><td><div id="textCopy229204">Pots incrustar aquest gràfic a la teva pàgina web. Text a copiar<textarea style="width:900px;height:50px">&lt;iframe src="https://mato.uab.cat:8443/enquestes/public/veureresultatsPregunta.jsp?idp=229201&amp;check=549337.4021739131" height="200" width="350"&gt;&lt;/iframe&gt;</textarea></div></td><td></td><td></td></tr>
+								   		
+											
+											
+											
+								   
+								   		<tr class="odd"><td><b>229204#radio</b></td><td colspan="2"><b>Fins ara s'ha seguit la programació de la assignatura que s'explica en la Guia Docent.</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+								
+								
+								
+								
+									
+								 	 
+									 	 		
+									   	
+											
+											<script>
+												
+												$(document).ready( function(){
+													dibuixaQuesito([{"label": "Molt d&#039;acord: 1","data":1},{"label": "D&#039;acord: 1","data":1},{"label": "Indiferent: 1","data":1},{"label": "En desacord: 0","data":0},{"label": "Molt en desacord: 2","data":2}],229204);
+												});
+											</script>
+											<tr><td></td><td><div id="placeholder229204" style="width: 900px; height: 250px; position: relative;"><canvas width="900" height="250"></canvas><canvas width="900" height="250" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="legend"><div style="position: absolute; width: 133px; height: 112px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Molt d'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">D'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">Indiferent: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(77,167,77);overflow:hidden"></div></div></td><td class="legendLabel">En desacord: 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(148,64,237);overflow:hidden"></div></div></td><td class="legendLabel">Molt en desacord: 2</td></tr></tbody></table></div><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 49px; left: 412px; background-color: rgb(237, 194, 64); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 49px; left: 412px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 136px; left: 440px; background-color: rgb(175, 216, 248); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 136px; left: 440px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 190px; left: 366px; background-color: rgb(203, 75, 75); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel2" style="position: absolute; top: 190px; left: 366px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 88px; left: 292px; background-color: rgb(148, 64, 237); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel4" style="position: absolute; top: 88px; left: 292px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">40%</div></span></div></td><td></td><td>Total: <b>5</b></td></tr>
+								   		<tr><td></td><td><div id="textCopy229205">Pots incrustar aquest gràfic a la teva pàgina web. Text a copiar<textarea style="width:900px;height:50px">&lt;iframe src="https://mato.uab.cat:8443/enquestes/public/veureresultatsPregunta.jsp?idp=229204&amp;check=549344.5923913043" height="200" width="350"&gt;&lt;/iframe&gt;</textarea></div></td><td></td><td></td></tr>
+								   		
+											
+											
+											
+								   
+								   		<tr class="odd"><td><b>229205#radio</b></td><td colspan="2"><b>El material del curs (presentacions en classe, enunciats de problemes o casos, guions de seminaris i pràctiques, lectures, bibliografia de consulta, etc.) està ben preparat i resulta útil</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+								
+								
+								
+								
+									
+								 	 
+									 	 		
+									   	
+											
+											<script>
+												
+												$(document).ready( function(){
+													dibuixaQuesito([{"label": "Molt d&#039;acord: 1","data":1},{"label": "D&#039;acord: 1","data":1},{"label": "Indiferent: 0","data":0},{"label": "En desacord: 1","data":1},{"label": "Molt en desacord: 2","data":2}],229205);
+												});
+											</script>
+											<tr><td></td><td><div id="placeholder229205" style="width: 900px; height: 250px; position: relative;"><canvas width="900" height="250"></canvas><canvas width="900" height="250" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="legend"><div style="position: absolute; width: 133px; height: 112px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Molt d'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">D'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">Indiferent: 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(77,167,77);overflow:hidden"></div></div></td><td class="legendLabel">En desacord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(148,64,237);overflow:hidden"></div></div></td><td class="legendLabel">Molt en desacord: 2</td></tr></tbody></table></div><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 49px; left: 412px; background-color: rgb(237, 194, 64); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 49px; left: 412px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 136px; left: 440px; background-color: rgb(175, 216, 248); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 136px; left: 440px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 190px; left: 366px; background-color: rgb(77, 167, 77); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel3" style="position: absolute; top: 190px; left: 366px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 88px; left: 292px; background-color: rgb(148, 64, 237); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel4" style="position: absolute; top: 88px; left: 292px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">40%</div></span></div></td><td></td><td>Total: <b>5</b></td></tr>
+								   		<tr><td></td><td><div id="textCopy229206">Pots incrustar aquest gràfic a la teva pàgina web. Text a copiar<textarea style="width:900px;height:50px">&lt;iframe src="https://mato.uab.cat:8443/enquestes/public/veureresultatsPregunta.jsp?idp=229205&amp;check=549346.9891304348" height="200" width="350"&gt;&lt;/iframe&gt;</textarea></div></td><td></td><td></td></tr>
+								   		
+											
+											
+											
+								   
+								   		<tr class="odd"><td><b>229206#radio</b></td><td colspan="2"><b>El sistema d'avaluació s'explica clarament a la Guia Docent de l'assignatura</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+								
+								
+								
+								
+									
+								 	 
+									 	 		
+									   	
+											
+											<script>
+												
+												$(document).ready( function(){
+													dibuixaQuesito([{"label": "Molt d&#039;acord: 1","data":1},{"label": "D&#039;acord: 1","data":1},{"label": "Indiferent: 1","data":1},{"label": "En desacord: 0","data":0},{"label": "Molt en desacord: 2","data":2}],229206);
+												});
+											</script>
+											<tr><td></td><td><div id="placeholder229206" style="width: 900px; height: 250px; position: relative;"><canvas width="900" height="250"></canvas><canvas width="900" height="250" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="legend"><div style="position: absolute; width: 133px; height: 112px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Molt d'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">D'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">Indiferent: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(77,167,77);overflow:hidden"></div></div></td><td class="legendLabel">En desacord: 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(148,64,237);overflow:hidden"></div></div></td><td class="legendLabel">Molt en desacord: 2</td></tr></tbody></table></div><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 49px; left: 412px; background-color: rgb(237, 194, 64); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 49px; left: 412px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 136px; left: 440px; background-color: rgb(175, 216, 248); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 136px; left: 440px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 190px; left: 366px; background-color: rgb(203, 75, 75); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel2" style="position: absolute; top: 190px; left: 366px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 88px; left: 292px; background-color: rgb(148, 64, 237); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel4" style="position: absolute; top: 88px; left: 292px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">40%</div></span></div></td><td></td><td>Total: <b>5</b></td></tr>
+								   		<tr><td></td><td><div id="textCopy229207">Pots incrustar aquest gràfic a la teva pàgina web. Text a copiar<textarea style="width:900px;height:50px">&lt;iframe src="https://mato.uab.cat:8443/enquestes/public/veureresultatsPregunta.jsp?idp=229206&amp;check=549349.3858695652" height="200" width="350"&gt;&lt;/iframe&gt;</textarea></div></td><td></td><td></td></tr>
+								   		
+											
+											
+											
+								   
+								   		<tr class="odd"><td><b>229207#radio</b></td><td colspan="2"><b>Els continguts de les proves i d'altres activitats d'avaluació es corresponen amb els continguts del curs i  també es correspon amb el temps que els professors van dedicar a cada tema</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+								
+								
+								
+								
+									
+								 	 
+									 	 		
+									   	
+											
+											<script>
+												
+												$(document).ready( function(){
+													dibuixaQuesito([{"label": "Molt d&#039;acord: 1","data":1},{"label": "D&#039;acord: 1","data":1},{"label": "Indiferent: 1","data":1},{"label": "En desacord: 0","data":0},{"label": "Molt en desacord: 2","data":2}],229207);
+												});
+											</script>
+											<tr><td></td><td><div id="placeholder229207" style="width: 900px; height: 250px; position: relative;"><canvas width="900" height="250"></canvas><canvas width="900" height="250" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="legend"><div style="position: absolute; width: 133px; height: 112px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Molt d'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">D'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">Indiferent: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(77,167,77);overflow:hidden"></div></div></td><td class="legendLabel">En desacord: 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(148,64,237);overflow:hidden"></div></div></td><td class="legendLabel">Molt en desacord: 2</td></tr></tbody></table></div><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 49px; left: 412px; background-color: rgb(237, 194, 64); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 49px; left: 412px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 136px; left: 440px; background-color: rgb(175, 216, 248); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 136px; left: 440px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 190px; left: 366px; background-color: rgb(203, 75, 75); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel2" style="position: absolute; top: 190px; left: 366px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 88px; left: 292px; background-color: rgb(148, 64, 237); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel4" style="position: absolute; top: 88px; left: 292px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">40%</div></span></div></td><td></td><td>Total: <b>5</b></td></tr>
+								   		<tr><td></td><td><div id="textCopy229208">Pots incrustar aquest gràfic a la teva pàgina web. Text a copiar<textarea style="width:900px;height:50px">&lt;iframe src="https://mato.uab.cat:8443/enquestes/public/veureresultatsPregunta.jsp?idp=229207&amp;check=549351.7826086957" height="200" width="350"&gt;&lt;/iframe&gt;</textarea></div></td><td></td><td></td></tr>
+								   		
+											
+											
+											
+								   
+								   		<tr class="odd"><td><b>229208#radio</b></td><td colspan="2"><b>Considerant el nombre de crèdits de l'assignatura, la càrrega de treball de l'estudiant és la adient</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								
+								
+								
+								
+								
+									
+								 	 
+									 	 		
+									   	
+											
+											<script>
+												
+												$(document).ready( function(){
+													dibuixaQuesito([{"label": "Molt d&#039;acord: 1","data":1},{"label": "D&#039;acord: 1","data":1},{"label": "Indiferent: 1","data":1},{"label": "En desacord: 0","data":0},{"label": "Molt en desacord: 2","data":2}],229208);
+												});
+											</script>
+											<tr><td></td><td><div id="placeholder229208" style="width: 900px; height: 250px; position: relative;"><canvas width="900" height="250"></canvas><canvas width="900" height="250" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="legend"><div style="position: absolute; width: 133px; height: 112px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Molt d'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">D'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">Indiferent: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(77,167,77);overflow:hidden"></div></div></td><td class="legendLabel">En desacord: 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(148,64,237);overflow:hidden"></div></div></td><td class="legendLabel">Molt en desacord: 2</td></tr></tbody></table></div><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 49px; left: 412px; background-color: rgb(237, 194, 64); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 49px; left: 412px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 136px; left: 440px; background-color: rgb(175, 216, 248); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 136px; left: 440px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 190px; left: 366px; background-color: rgb(203, 75, 75); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel2" style="position: absolute; top: 190px; left: 366px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 88px; left: 292px; background-color: rgb(148, 64, 237); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel4" style="position: absolute; top: 88px; left: 292px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">40%</div></span></div></td><td></td><td>Total: <b>5</b></td></tr>
+								   		<tr><td></td><td><div id="textCopy229209">Pots incrustar aquest gràfic a la teva pàgina web. Text a copiar<textarea style="width:900px;height:50px">&lt;iframe src="https://mato.uab.cat:8443/enquestes/public/veureresultatsPregunta.jsp?idp=229208&amp;check=549354.179347826" height="200" width="350"&gt;&lt;/iframe&gt;</textarea></div></td><td></td><td></td></tr>
+								   		
+											
+											
+											
+								   
+								   		<tr class="odd"><td><b>229209#radio</b></td><td colspan="2"><b>Amb aquesta assignatura estic aprenent coses que considero valuoses per la meva formació</b></td><td></td></tr>
+								   		
+								   		
+								   		
+								   		
+								   	
+								   	
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				   
+								 
+								 
+									
+							     
+							   			
+							   			
+											
+											
+										 	
+																				
+										
+									 
+									
+									   	
+										
+							   
+						        
+			 
+			 		
+					
+					
+				  
+				      
+				 
+				 	        
+			
+			
+			
+			
+			
+			
+			
+			
+				<script>
+												$(document).ready( function(){
+													dibuixaQuesito([{"label": "Molt d&#039;acord: 2","data":2},{"label": "D&#039;acord: 1","data":1},{"label": "Indiferent: 0","data":0},{"label": "En desacord: 0","data":0},{"label": "Molt en desacord: 2","data":2}],229210);
+												});
+				</script>
+				<tr><td></td><td><div id="placeholder229210" style="width: 900px; height: 250px; position: relative;"><canvas width="900" height="250"></canvas><canvas width="900" height="250" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="legend"><div style="position: absolute; width: 133px; height: 112px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">Molt d'acord: 2</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">D'acord: 1</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div></div></td><td class="legendLabel">Indiferent: 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(77,167,77);overflow:hidden"></div></div></td><td class="legendLabel">En desacord: 0</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(148,64,237);overflow:hidden"></div></div></td><td class="legendLabel">Molt en desacord: 2</td></tr></tbody></table></div><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 88px; left: 440px; background-color: rgb(237, 194, 64); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 88px; left: 440px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">40%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 190px; left: 366px; background-color: rgb(175, 216, 248); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 190px; left: 366px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">20%</div></span><div class="pieLabelBackground" style="position: absolute; width: 35px; height: 26px; top: 88px; left: 292px; background-color: rgb(148, 64, 237); opacity: 0.5;"> </div><span class="pieLabel" id="pieLabel4" style="position: absolute; top: 88px; left: 292px;"><div style="font-size:1.5em; font-weight: bold;text-align:center;color:white;">40%</div></span></div></td><td></td><td>Total: <b>5</b></td></tr>
+				<tr><td></td><td><div id="textCopy229210">Pots incrustar aquest gràfic a la teva pàgina web. Text a copiar<textarea style="width:900px;height:50px">&lt;iframe src="https://mato.uab.cat:8443/enquestes/public/veureresultatsPregunta.jsp?idp=229209&amp;check=549356.5760869565" height="200" width="350"&gt;&lt;/iframe&gt;</textarea></div></td><td></td><td></td></tr>
+								   		
+			
+			
+			</tbody></table>
+			<div id="clear"></div>
+	
+	
+		
+	
+	
+
+
+		</div> <!-- contenidor -->
+	</div><!-- continguts -->
+
+
+	<div class="footer">
+  	<p>
+	 		
+<br style="clear:both">
+</p><div class="footer">
+			<p>
+
+			Dissenyat, desenvolupat i implementat per l'APSI
+			<br>
+			© 2010 - 2014 <a href="http://uab.cat/" target="_blank" title="enllaç a la pàgina principal de la UAB">Universitat Autònoma de Barcelona</a> Tots els drets reservats
+		</p>
+		</div>
+
+  	<p></p>
+	</div>
+
+	
+
+
+
+</div><div id="datepicker_div"></div></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span><div><div class="gr_-editor gr-iframe-first-load" style="display: none;"><div class="gr_-editor_back"></div><iframe class="gr_-ifr gr-_dialog-content" src="./Gestor Enquestes_files/saved_resource.html"></iframe></div></div><grammarly-card><div></div></grammarly-card></html>
