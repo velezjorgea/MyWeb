@@ -2547,7 +2547,7 @@ input, select, textarea {
 		position: relative;
 	}
 		.image.left, .image.right, .img-circle {
-			max-width: 20%;
+			max-width: 30%;
 		}
 
 			.image.left img, .image.right img {
