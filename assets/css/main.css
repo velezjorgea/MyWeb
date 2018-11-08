@@ -1914,8 +1914,8 @@ input, select, textarea {
 		input[type="button"].primary,
 		button.primary,
 		.button.primary {
-			background-color: #ffffff;
-			color: #312450 !important;
+			background-color: #312450;
+			color:  #ffffff!important;
 		}
 
 			input[type="submit"].primary:after,
@@ -2546,14 +2546,8 @@ input, select, textarea {
 		display: inline-block;
 		position: relative;
 	}
-
-		.image img {
-			border-radius: 0.25em;
-			display: block;
-		}
-
-		.image.left, .image.right {
-			max-width: 40%;
+		.image.left, .image.right, .img-circle {
+			max-width: 20%;
 		}
 
 			.image.left img, .image.right img {
@@ -2590,7 +2584,13 @@ input, select, textarea {
 
 			.image.main img {
 				width: 100%;
-			}
+		}
+		.img-circle {
+    			float: left;
+    			border-radius: 50%;
+    			margin: 0 1.5em 1em 0;
+			top: 0.25em;
+		}
 
 /* List */
 
